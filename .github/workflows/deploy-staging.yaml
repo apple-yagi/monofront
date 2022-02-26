@@ -1,0 +1,62 @@
+name: Deploy bundle to S3 staging
+
+on:
+  repository_dispatch:
+    types: [deploy]
+
+env:
+  SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK_URL }}
+  SLACK_USERNAME: DeployBot
+  SLACK_CHANNEL: slack_bot
+  SLACK_ICON: https://cdn.icon-icons.com/icons2/936/PNG/64/github-logo_icon-icons.com_73546.png
+
+jobs:
+  deploy:
+    runs-on: ubuntu-20.04
+    steps:
+      - name: Slack notification on start
+        uses: rtCamp/action-slack-notify@v2
+        env:
+          SLACK_TITLE: Deploy Start
+          SLACK_COLOR: good
+
+      - name: Checkout
+        uses: actions/checkout@master
+        with:
+          ref: ${{ github.event.client_payload.ref }}
+
+      - name: Install Dependencies
+        run: yarn
+        working-directory: ./apps/app1
+
+      - name: Build
+        run: yarn build:staging
+        working-directory: ./apps/app1
+
+      - name: Deploy
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        run: >
+          aws s3 cp --recursive
+          apps/app1/dist s3://monofront-static
+          --exclude "*"
+          --include "*.bundle.js"
+          --region ap-northeast-1
+          --cache-control "public, max-age=31536000"
+          --metadata-directive REPLACE
+          --metadata x-amz-meta-surrogate-key="apps app1 ${{ github.event.client_payload.ref }}"
+
+      - name: Slack Notification on Success
+        if: ${{ success() }}
+        uses: rtCamp/action-slack-notify@v2
+        env:
+          SLACK_TITLE: Deploy Success
+          SLACK_COLOR: good
+
+      - name: Slack Notification on Failure
+        if: ${{ failure() }}
+        uses: rtCamp/action-slack-notify@v2
+        env:
+          SLACK_TITLE: Deploy Failure
+          SLACK_COLOR: danger

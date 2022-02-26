@@ -5,7 +5,7 @@ const App = () => (
   <h1
     css={css`
       text-align: center;
-      color: green;
+      color: yellow;
     `}
   >
     Hello World

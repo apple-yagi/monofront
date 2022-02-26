@@ -1,6 +1,6 @@
 import type { AWS } from '@serverless/typescript';
 
-import hello from '@functions/hello';
+import kickGithubActions from '@functions/kickGithubActions';
 
 const serverlessConfiguration: AWS = {
   service: 'deploybot',
@@ -19,7 +19,7 @@ const serverlessConfiguration: AWS = {
     },
   },
   // Import the function via paths
-  functions: { hello },
+  functions: { kickGithubActions },
   package: { individually: true },
   custom: {
     esbuild: {

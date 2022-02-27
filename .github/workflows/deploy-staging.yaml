@@ -19,13 +19,6 @@ jobs:
         with:
           ref: ${{ github.event.client_payload.ref }}
 
-      - name: Slack notification on start
-        uses: rtCamp/action-slack-notify@v2
-        env:
-          SLACK_TITLE: Deploy Start
-          SLACK_COLOR: good
-          SLACK_MESSAGE: ${{ github.event.client_payload.ref }}ブランチをデプロイします
-
       - name: Install Dependencies
         run: yarn
         working-directory: ./apps/app1

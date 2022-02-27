@@ -14,17 +14,17 @@ jobs:
   deploy:
     runs-on: ubuntu-20.04
     steps:
+      - name: Checkout
+        uses: actions/checkout@master
+        with:
+          ref: ${{ github.event.client_payload.ref }}
+
       - name: Slack notification on start
         uses: rtCamp/action-slack-notify@v2
         env:
           SLACK_TITLE: Deploy Start
           SLACK_COLOR: good
           SLACK_MESSAGE: ${{ github.event.client_payload.ref }}ブランチをデプロイします
-
-      - name: Checkout
-        uses: actions/checkout@master
-        with:
-          ref: ${{ github.event.client_payload.ref }}
 
       - name: Install Dependencies
         run: yarn

@@ -6,9 +6,9 @@ on:
 
 env:
   SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK_URL }}
-  SLACK_USERNAME: DeployBot
+  SLACK_USERNAME: actions_bot
   SLACK_CHANNEL: slack_bot
-  SLACK_ICON: https://cdn.icon-icons.com/icons2/936/PNG/64/github-logo_icon-icons.com_73546.png
+  SLACK_ICON: https://avatars.slack-edge.com/2022-02-26/3186911646272_22c66c95bf52ed05d10a_512.png
 
 jobs:
   deploy:
@@ -19,6 +19,7 @@ jobs:
         env:
           SLACK_TITLE: Deploy Start
           SLACK_COLOR: good
+          SLACK_MESSAGE: ${{ github.event.client_payload.ref }}ブランチをデプロイします
 
       - name: Checkout
         uses: actions/checkout@master
@@ -39,7 +40,7 @@ jobs:
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         run: >
           aws s3 cp --recursive
-          apps/app1/dist s3://monofront-static
+          apps/app1/dist s3://monofront-static/staging
           --exclude "*"
           --include "*.bundle.js"
           --region ap-northeast-1
@@ -53,6 +54,7 @@ jobs:
         env:
           SLACK_TITLE: Deploy Success
           SLACK_COLOR: good
+          SLACK_MESSAGE: ${{ github.event.client_payload.ref }}ブランチのデプロイが完了しました
 
       - name: Slack Notification on Failure
         if: ${{ failure() }}
@@ -60,3 +62,4 @@ jobs:
         env:
           SLACK_TITLE: Deploy Failure
           SLACK_COLOR: danger
+          SLACK_MESSAGE: ${{ github.event.client_payload.ref }}ブランチのデプロイに失敗しました

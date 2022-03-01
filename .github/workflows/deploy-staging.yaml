@@ -40,7 +40,7 @@ jobs:
           --acl public-read
           --cache-control "public, max-age=31536000"
           --metadata-directive REPLACE
-          --metadata x-amz-meta-surrogate-key="apps app1 ${{ github.event.client_payload.ref }}"
+          --metadata surrogate-key="apps app1 ${{ github.event.client_payload.ref }}"
 
       - name: Slack Notification on Success
         if: ${{ success() }}

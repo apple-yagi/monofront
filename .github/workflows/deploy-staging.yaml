@@ -21,11 +21,11 @@ jobs:
 
       - name: Install Dependencies
         run: yarn
-        working-directory: ./apps/app1
+        working-directory: ./apps/react-webpack
 
       - name: Build
         run: yarn build:staging
-        working-directory: ./apps/app1
+        working-directory: ./apps/react-webpack
 
       - name: Deploy
         env:
@@ -33,14 +33,14 @@ jobs:
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         run: >
           aws s3 cp --recursive
-          apps/app1/dist s3://monofront-static/staging
+          apps/react-webpack/dist s3://monofront-static/staging
           --exclude "*"
           --include "*.bundle.js"
           --region ap-northeast-1
           --acl public-read
           --cache-control "public, max-age=31536000"
           --metadata-directive REPLACE
-          --metadata surrogate-key="apps app1 ${{ github.event.client_payload.ref }}"
+          --metadata surrogate-key="apps react-webpack ${{ github.event.client_payload.ref }}"
 
       - name: Slack Notification on Success
         if: ${{ success() }}

@@ -1,0 +1,2 @@
+(() => {})();
+// # sourceMappingURL=indext.js.map

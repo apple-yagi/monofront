@@ -3,4 +3,7 @@ node_modules
 *.bundle.js.map
 *.bundle.js.LICENSE.txt
 
+*.bundle.css
+*.bundle.css.map
+
 .vscode

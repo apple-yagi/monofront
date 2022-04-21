@@ -1,3 +1,4 @@
+import '../styles/index.css';
 import ReactDOM from 'react-dom';
 import { css } from '@emotion/react';
 

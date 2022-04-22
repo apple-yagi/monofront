@@ -3,7 +3,7 @@
   "license": "UNLICENSED",
   "private": true,
   "scripts": {
-    "build": "node build.js && make hosting"
+    "build": "ts-node build.ts"
   },
   "dependencies": {
     "react": "^17.0.2",

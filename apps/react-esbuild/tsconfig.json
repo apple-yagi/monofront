@@ -1,4 +1,10 @@
 {
+  "ts-node": {
+    // these options are overrides used only by ts-node
+    "compilerOptions": {
+      "module": "commonjs"
+    }
+  },
   "compilerOptions": {
     "target": "es2019",
     "module": "esnext",
@@ -9,12 +15,12 @@
     "esModuleInterop": true,
     "resolveJsonModule": true,
     "forceConsistentCasingInFileNames": true,
-    "types": ["@emotion/react/types/css-prop"],
+    "types": ["@emotion/react/types/css-prop", "@types/node"],
     "baseUrl": "src",
     "paths": {
       "@/*": ["./*"],
       "@components/*": ["components/*"]
     }
   },
-  "exclude": ["./node_modules"]
+  "exclude": ["./node_modules", "build.ts"]
 }

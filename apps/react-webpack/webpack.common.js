@@ -2,7 +2,7 @@ const path = require('path');
 
 module.exports = {
   entry: {
-    'react-webpack': path.join(__dirname, 'src/pages/', 'index.tsx'),
+    app: path.join(__dirname, 'src/pages/', 'index.tsx'),
   },
   output: {
     path: path.resolve(__dirname, 'dist'),

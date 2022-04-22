@@ -3,7 +3,7 @@
   "license": "UNLICENSED",
   "private": true,
   "scripts": {
-    "build": "webpack --config webpack.prod.js && make hosting",
+    "build": "webpack --config webpack.prod.js",
     "build:staging": "NODE_ENV=staging webpack --config webpack.prod.js",
     "build:production": "NODE_ENV=production webpack --config webpack.prod.js"
   },

@@ -1,3 +1,10 @@
-import { Test } from '@/components/Test';
+import { Link } from 'react-router-dom';
 
-export const IndexPage = () => <Test />;
+const IndexPage = () => (
+  <div>
+    <h1>IndexPage</h1>
+    <Link to='/about.html'>About</Link>
+  </div>
+);
+
+export default IndexPage;

@@ -2,11 +2,13 @@ const path = require('path');
 
 module.exports = {
   entry: {
-    app: path.join(__dirname, 'src/pages/', 'index.tsx'),
+    app: path.join(__dirname, 'src/App.tsx'),
   },
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: '[name].bundle.js',
+    chunkFilename: '[name].bundle.js',
+    publicPath: '/js/webpack/',
   },
   module: {
     rules: [
@@ -18,5 +20,12 @@ module.exports = {
   },
   resolve: {
     extensions: ['.js', '.ts', '.tsx', '.json', '.mjs', '.wasm'],
+  },
+  devtool: 'source-map',
+  optimization: {
+    splitChunks: {
+      name: 'vendor',
+      chunks: 'initial',
+    },
   },
 };

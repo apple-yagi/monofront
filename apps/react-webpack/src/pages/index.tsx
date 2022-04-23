@@ -1,16 +1,10 @@
-import '../styles/index.css';
-import ReactDOM from 'react-dom';
-import { css } from '@emotion/react';
+import { Link } from 'react-router-dom';
 
-const App = () => (
-  <h1
-    css={css`
-      text-align: center;
-      color: blue;
-    `}
-  >
-    Hello World
-  </h1>
+const IndexPage = () => (
+  <div>
+    <h1>IndexPage</h1>
+    <Link to='/about.html'>About</Link>
+  </div>
 );
 
-ReactDOM.render(<App />, document.getElementById('root'));
+export default IndexPage;

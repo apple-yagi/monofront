@@ -11,3 +11,6 @@ node_modules
 # Chunk file
 *.chunk.js
 *.chunk.js.map
+
+# Webpack analyzer json
+stats.json

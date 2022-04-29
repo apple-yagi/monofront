@@ -3,7 +3,7 @@ name: Diff bundle stats
 on:
   pull_request:
     paths:
-      - 'apps/react-webpack/*'
+      - 'apps/react-webpack/**/*'
 
 jobs:
   build-base:

@@ -7,7 +7,7 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: '[name].bundle.js',
-    chunkFilename: '[name].bundle.js',
+    chunkFilename: '[name].[contenthash].chunk.js',
     publicPath: '/js/webpack/',
   },
   module: {

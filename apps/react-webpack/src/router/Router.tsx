@@ -1,8 +1,12 @@
 import { lazy, Suspense } from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
-const IndexPage = lazy(() => import('@/pages/index'));
-const AboutPage = lazy(() => import('@/pages/about'));
+const IndexPage = lazy(
+  () => import(/* webpackChunkName: "IndexPage" */ '@/pages/index'),
+);
+const AboutPage = lazy(
+  () => import(/* webpackChunkName: "AboutPage" */ '@/pages/about'),
+);
 
 const Loading = () => <p>Loading...</p>;
 

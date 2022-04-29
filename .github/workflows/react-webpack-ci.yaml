@@ -16,18 +16,18 @@ jobs:
         ref: ${{ github.base_ref }}
 
     - name: Install dependencies
-      run: npm ci
-      env:
-        NODE_AUTH_TOKEN: ${{secrets.TOKEN_REPO}}
+      run: yarn --frozen-lock
+      working-directory: ./apps/react-webpack
 
     - name: Build
-      run: npm run build-demo
+      run: yarn build:production
+      working-directory: ./apps/react-webpack
 
     - name: Upload base stats.json
       uses: actions/upload-artifact@v2
       with:
         name: base
-        path: ./demo/demo-dist/stats.json
+        path: ./apps/react-webpack/dist/stats.json
         retention-days: 1
 
   build-pr:
@@ -38,18 +38,18 @@ jobs:
       uses: actions/checkout@v2
   
     - name: Install dependencies
-      run: npm ci
-      env:
-        NODE_AUTH_TOKEN: ${{secrets.TOKEN_REPO}}
+      run: yarn --frozen-lock
+      working-directory: ./apps/react-webpack
   
     - name: Build
-      run: npm run build-demo
+      run: yarn build:production
+      working-directory: ./apps/react-webpack
   
     - name: Upload base stats.json
       uses: actions/upload-artifact@v2
       with:
         name: pr
-        path: ./demo/demo-dist/stats.json
+        path: ./apps/react-webpack/dist/stats.json
         retention-days: 1
 
   report:

@@ -12,6 +12,13 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: Checkout PR
+        uses: actions/checkout@v2
+
+      - name: Install & Build
+        run: yarn --frozen-lock && yarn build:production
+        working-directory: ./apps/react-webpack
+
       - name: Analysis
         uses: apple-yagi/bundle-analysis@v1
         with:

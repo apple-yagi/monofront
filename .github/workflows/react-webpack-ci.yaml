@@ -1,0 +1,30 @@
+name: Diff bundle stats
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - apps/react-webpack/**
+
+jobs:
+  build:
+    runs-on: ubuntu-20.04
+    steps:
+      - name: Checkout
+        uses: actions/checkout@master
+
+      - name: Install Dependencies
+        run: yarn --frozen-lock
+        working-directory: ./apps/react-webpack
+
+      - name: Build
+        run: yarn build:production
+        working-directory: ./apps/react-webpack
+
+      - name: Run bundle-stats for react-webpack bundle
+        uses: vio/bundle-stats-action@v1
+        with:
+          id: react-webpack
+          webpack-stats-path: 'apps/react-webpack/dist/stats.json'
+          repo-token: ${{ secrets.GITHUB_TOKEN }}

@@ -20,7 +20,7 @@ jobs:
         working-directory: ./apps/react-webpack
 
       - name: Analysis
-        uses: apple-yagi/bundle-analysis@v1
+        uses: apple-yagi/filesize-analysis@v1
         with:
           out_dir: "./apps/react-webpack/dist" # Output directory for build
           ext: "bundle.js|chunk.js" # If specifying multiple extension, "js|css"

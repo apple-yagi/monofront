@@ -1,11 +1,9 @@
 name: Diff bundle stats
 
 on:
-  push:
-    branches:
-      - main
+  pull_request:
     paths:
-      - apps/react-webpack/**
+      - 'apps/react-webpack/*'
 
 jobs:
   build:

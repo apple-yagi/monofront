@@ -1,6 +1,6 @@
 import { atom } from 'recoil';
 
 export const todoState = atom<string>({
-  key: 'todoState',
+  key: 'atom/todoState',
   default: '',
 });

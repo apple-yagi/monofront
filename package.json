@@ -4,7 +4,7 @@
   "license": "UNLICENSED",
   "private": true,
   "scripts": {
-    "build-ci:react-webpack": "cd apps/react-webpack && yarn --frozen-lock && yarn build",
+    "build:react-webpack": "cd apps/react-webpack && yarn --frozen-lock && yarn build",
     "prepare": "git config --local core.hooksPath .githooks"
   },
   "devDependencies": {

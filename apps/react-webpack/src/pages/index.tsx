@@ -7,7 +7,7 @@ const IndexPage = () => {
 
   return (
     <div>
-      <h1>IndexPage!</h1>
+      <h1>IndexPage</h1>
       <Link to='/about.html'>About</Link>
       <div style={{ marginTop: '50px' }}>
         <h3>Todo: {todo}</h3>

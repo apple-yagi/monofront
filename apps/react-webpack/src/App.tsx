@@ -5,6 +5,7 @@ import { RecoilRoot } from 'recoil';
 
 const App = () => (
   <RecoilRoot>
+    <h1>テスト</h1>
     <Router />
   </RecoilRoot>
 );

@@ -24,4 +24,5 @@ jobs:
         with:
           out_dir: "./apps/react-webpack/dist" # Output directory for build
           ext: "bundle.js|chunk.js" # If specifying multiple extension, "js|css"
+          build_cmd: "cd ./apps/react-webpack && yarn build:production"
           github_token: ${{secrets.GITHUB_TOKEN}}

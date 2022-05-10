@@ -12,5 +12,5 @@ jobs:
       - uses: preactjs/compressed-size-action@v2
         with:
           build-script: "build:react-webpack"
-          pattern: "./apps/react-webpack/dist/**/*.{bundle.js}"
+          pattern: "./apps/react-webpack/dist/**/*.bundle.js"
           repo-token: "${{ secrets.GITHUB_TOKEN }}"

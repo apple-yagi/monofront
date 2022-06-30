@@ -1,0 +1,11 @@
+{
+  "name": "@monofront/ui",
+  "license": "UNLICENSED",
+  "private": true,
+  "version": "1.0.0",
+  "devDependencies": {
+    "@types/react": "^18.0.14",
+    "@types/react-dom": "^18.0.5",
+    "typescript": "^4.7.4"
+  }
+}

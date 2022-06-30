@@ -1,7 +1,8 @@
 {
-  "name": "react-esbuild",
+  "name": "@monofront/react-esbuild",
   "license": "UNLICENSED",
   "private": true,
+  "version": "1.0.0",
   "scripts": {
     "build": "ts-node build.ts"
   },

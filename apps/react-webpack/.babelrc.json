@@ -21,10 +21,15 @@
     [
       "module-resolver",
       {
-        "alias": {
-          "@": "./src",
-          "@components": "./src/components"
-        }
+        "alias": [
+          {
+            "@": "./src",
+            "@components": "./src/components"
+          },
+          {
+            "@ui": "../../node_modules/@monofront/ui"
+          }
+        ]
       }
     ]
   ]

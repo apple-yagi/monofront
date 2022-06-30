@@ -1,4 +1,5 @@
 {
+  "extends": "../../tsconfig.base.json",
   "ts-node": {
     // these options are overrides used only by ts-node
     "compilerOptions": {
@@ -6,20 +7,11 @@
     }
   },
   "compilerOptions": {
-    "target": "es2019",
-    "module": "esnext",
-    "moduleResolution": "node",
-    "jsx": "react-jsx",
-    "jsxImportSource": "@emotion/react",
-    "strict": true,
-    "esModuleInterop": true,
-    "resolveJsonModule": true,
-    "forceConsistentCasingInFileNames": true,
-    "types": ["@emotion/react/types/css-prop", "@types/node"],
-    "baseUrl": "src",
+    "baseUrl": ".",
     "paths": {
-      "@/*": ["./*"],
-      "@components/*": ["components/*"]
+      "@/*": ["./src/*"],
+      "@components/*": ["./src/components/*"],
+      "@ui/*": ["../../packages/ui/*"]
     }
   },
   "exclude": ["./node_modules", "build.ts"]
